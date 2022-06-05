@@ -23,6 +23,12 @@ config :example, ExampleWeb.Endpoint,
       "watch",
       "app",
       cd: Path.expand("../assets", __DIR__)
+    ],
+    node: [
+      "sass-watch.js",
+      cd: Path.expand("../assets", __DIR__),
+      into: IO.stream(:stdio, :line),
+      stderr_to_stdout: true
     ]
   ]
 
