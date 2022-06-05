@@ -13,10 +13,17 @@ config :example, ExampleWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "yz9fuUrqKJfng2BMrY0k0RqhXgAj+1JJXsTQot2TQd9GEO2t8b31WIwua/ytfL18",
+  secret_key_base: "zVkqz2yEQ9m0gFWtSAVXFj8KziMdPmGpWlnkvaOBm324pq9hHoF6xMFUzwv6Dn0G",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    bash: [
+      "cljs-start.sh",
+      "node_modules/.bin/shadow-cljs",
+      "watch",
+      "app",
+      cd: Path.expand("../assets", __DIR__)
+    ]
   ]
 
 # ## SSL Support
@@ -47,7 +54,7 @@ config :example, ExampleWeb.Endpoint,
 config :example, ExampleWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/static/.*(css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/example_web/(live|views)/.*(ex)$",
       ~r"lib/example_web/templates/.*(eex)$"

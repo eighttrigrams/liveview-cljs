@@ -12,7 +12,7 @@ config :example, ExampleWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: ExampleWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Example.PubSub,
-  live_view: [signing_salt: "MYfbXP25"]
+  live_view: [signing_salt: "9cfPzWZ5"]
 
 # Configures the mailer
 #
@@ -31,7 +31,7 @@ config :esbuild,
   version: "0.14.29",
   default: [
     args:
-      ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+      ~w(js/assets.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]
